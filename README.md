@@ -71,13 +71,13 @@ The front end server will run on https://localhost:5173
 ### POST `/shorten`
 ```
 {
-  "url": "https://www.example.com/some/long/url"
+  "url": "https://roadmap.sh/projects/url-shortening-service"
 }
 ```
 ### Response
 ```
 {
-    "url": "http://www.beast.com",
+    "url": "https://roadmap.sh/projects/url-shortening-service",
     "shortcode": "7c876c",
     "createdAt": "Mon Mar 17 2025 19:39:20 GMT+0300 (East Africa Time)",
     "updatedAt": "Mon Mar 17 2025 19:39:20 GMT+0300 (East Africa Time)",
@@ -92,7 +92,7 @@ The front end server will run on https://localhost:5173
 ```
 {
   "id": "1",
-  "url": "https://www.example.com/some/long/url",
+  "url": "https://roadmap.sh/projects/url-shortening-service",
   "shortCode": "abc123",
   "createdAt": "2021-09-01T12:00:00Z",
   "updatedAt": "2021-09-01T12:00:00Z"
@@ -103,7 +103,7 @@ The front end server will run on https://localhost:5173
 ### Response:
 ```
 {
-  "url": "https://www.example.com/some/updated/url"
+  "url": "https://roadmap.sh/projects/url-shortening-service/updated"
 }
 ```
 ### 🔹  Delete Short URL
