@@ -3,8 +3,19 @@ import axios from "axios";
 
 function App() {
   const [url, setUrl] = useState("");
+  const[shortcode, setShortcode] = useState("");
   const [shortUrl, setShortUrl] = useState("");
+  const [ogUrl, setOgUrl] = useState("")
   const [error, setError] = useState("");
+
+  const handleRetreive = async () => {
+    try{
+      const response = await axios.get(`http://localhost:3000/shorten/${shortcode}`);
+      setOgUrl(response.data.message);
+    }catch(err){
+      setError("Failed to shorten URL.",err);
+    }
+  }
 
   const handleShorten = async () => {
     setError("");
@@ -51,6 +62,29 @@ function App() {
             Shortened URL:{" "}
             <a href={shortUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
               {shortUrl}
+            </a>
+          </div>
+        )}
+        <p className="text-gray-600 mt-2">Enter Shortcode Below</p>
+        <input 
+        className="w-full p-2 mt-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        type="text" 
+        value={shortcode}
+        placeholder="ab309t"
+        onChange={(e) => setShortcode(e.target.value)}
+        />
+        <button
+        onClick={handleRetreive}
+        className="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+        >
+          Retrive URL
+        </button>
+
+        {ogUrl && (
+          <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
+            Original URL:{" "}
+            <a href={ogUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+              {ogUrl}
             </a>
           </div>
         )}
